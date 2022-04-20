@@ -16,9 +16,32 @@ mongoose.connect('mongodb://localhost:27017/todolist')
 
 const requestListener = async (req, res) =>{
   
+
+  let body = '';
+  req.on('data', chunk => body+=chunk); // 接收資料
+  
   if(req.url === '/posts' && req.method === REQUEST_METHOD.GET){
     const posts = await Post.find();
     successHandle(res, posts);
+  } else if(req.url === '/posts' && req.method === REQUEST_METHOD.POST){
+    req.on('end', async ()=>{
+      try{
+        const data = JSON.parse(body);
+        const { title } = data;
+        if(title !== undefined){
+          // 新增資料
+          const post = await Post.create({
+            title
+          })
+          const posts = await Post.find();
+          successHandle(res, posts);
+        } else {
+          errorHandle(res, '標題必填')
+        }
+      }catch(err){
+        errorHandle(res, err);
+      }
+    })
   } else if(req.method === REQUEST_METHOD.OPTIONS){
     res.writeHead(200, HEADERS);
     res.end();
