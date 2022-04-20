@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "605b490b-e38a-4bd0-a2f1-9b254a256875",
+		"name": "todolist - warm-falls-13177 - peter.chen1024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得代辦",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增代辦",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"title\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除代辦ALL",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除代辦{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts/625fae96e952547309fb1f50",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts",
+						"625fae96e952547309fb1f50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改代辦{id}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"title\": \"update\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts/625fae96e952547309fb1f50",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts",
+						"625fae96e952547309fb1f50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "預檢請求",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PORT",
+			"value": "3005"
+		},
+		{
+			"key": "DOMAIN",
+			"value": "warm-falls-13177.herokuapp.com",
+			"type": "string"
+		}
+	]
+}
