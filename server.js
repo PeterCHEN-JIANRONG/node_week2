@@ -12,10 +12,7 @@ mongoose.connect('mongodb://localhost:27017/todolist')
   console.log(err);
 })
 
-
-
 const requestListener = async (req, res) =>{
-  
 
   let body = '';
   req.on('data', chunk => body+=chunk); // 接收資料
@@ -53,8 +50,33 @@ const requestListener = async (req, res) =>{
     if(post !== null){
       successHandle(res, posts); // 單筆刪除成功
     } else {
-      successHandle(res, posts, '查無此 id'); // 查無 id
+      errorHandle(res, '查無此 id'); // 查無 id
     }
+  } else if(req.url.startsWith('/posts/') && req.method === REQUEST_METHOD.PATCH){
+    req.on('end', async ()=>{
+      try{
+        const data = JSON.parse(body);
+        const id = req.url.split('/').pop();
+        const { title } = data;
+
+        if( title !== undefined && title !== ""){
+          const post = await Post.findByIdAndUpdate(id,{
+            title
+          })
+          const posts = await Post.find();
+          if(post !== null){
+            successHandle(res, posts);
+          } else{
+            errorHandle(res, '查無此 id'); // 查無 id
+          }
+        } else {
+          errorHandle(res, '標題必填');
+        }
+      } catch (err){
+        errorHandle(res, err);
+      }
+    })
+  
   } else if(req.method === REQUEST_METHOD.OPTIONS){
     res.writeHead(200, HEADERS);
     res.end();
