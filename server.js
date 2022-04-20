@@ -14,8 +14,18 @@ mongoose.connect('mongodb://localhost:27017/todolist')
 
 
 
-const requestListener = (req, res) =>{
+const requestListener = async (req, res) =>{
   
+  if(req.url === '/posts' && req.method === REQUEST_METHOD.GET){
+    const posts = await Post.find();
+    successHandle(res, posts);
+  } else if(req.method === REQUEST_METHOD.OPTIONS){
+    res.writeHead(200, HEADERS);
+    res.end();
+  } else {
+    // 404 Page
+    errorHandle(res, '無此網站路由', 404);
+  }
 }
 
 // server 監聽
