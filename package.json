@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/PeterCHEN-JIANRONG/node_week2/issues"
   },
-  "homepage": "https://github.com/PeterCHEN-JIANRONG/node_week2#readme"
+  "homepage": "https://github.com/PeterCHEN-JIANRONG/node_week2#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.3.0"
+  }
 }
