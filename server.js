@@ -42,6 +42,19 @@ const requestListener = async (req, res) =>{
         errorHandle(res, err);
       }
     })
+  } else if(req.url === '/posts' && req.method === REQUEST_METHOD.DELETE){
+    await Post.deleteMany({});
+    const posts = await Post.find();
+    successHandle(res, posts);
+  } else if(req.url.startsWith('/posts/') && req.method === REQUEST_METHOD.DELETE){
+    const id = req.url.split('/').pop();
+    const post = await Post.findByIdAndDelete(id);
+    const posts = await Post.find();
+    if(post !== null){
+      successHandle(res, posts); // 單筆刪除成功
+    } else {
+      successHandle(res, posts, '查無此 id'); // 查無 id
+    }
   } else if(req.method === REQUEST_METHOD.OPTIONS){
     res.writeHead(200, HEADERS);
     res.end();

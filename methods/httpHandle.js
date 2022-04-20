@@ -9,12 +9,16 @@ const errorHandle = (response, message = '程式執行錯誤', statusCode = 400)
   response.end();
 };
 
-const successHandle = (response, data, statusCode = 200) => {
+const successHandle = (response, data, message = '', statusCode = 200) => {
   response.writeHead(statusCode, HEADERS);
-  response.write(JSON.stringify({
+  const obj = {
     status: 'success',
     data,
-  }));
+  }
+  if(message !== ''){ // 若有 message 才加進去 response
+    obj.message = message;
+  }
+  response.write(JSON.stringify(obj));
   response.end();
 };
 
