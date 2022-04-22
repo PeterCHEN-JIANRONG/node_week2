@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "605b490b-e38a-4bd0-a2f1-9b254a256875",
-		"name": "todolist - warm-falls-13177 - peter.chen1024",
+		"_postman_id": "003e0d93-025a-435d-bcd6-8d54f9ef1837",
+		"name": "posts - heroku - peter.chen1024",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -30,7 +30,34 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"title\": \"test\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Cornell Broadbear\",\r\n    \"content\": \"at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin\",\r\n    \"image\": \"http://dummyimage.com/197x100.png/dddddd/000000\",\r\n    \"tags\": [\r\n        \"謎因\",\r\n        \"電影\"\r\n    ],\r\n    \"type\": \"group\",\r\n    \"likes\": 1898,\r\n    \"comments\": 991\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{DOMAIN}}/posts",
+					"protocol": "https",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增代辦 - 資料格式錯誤驗證",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": [100,200,300],\r\n    \"content\": [100,200,300],\r\n    \"image\": [100,200,300],\r\n    \"tags\": \"迷因\",\r\n    \"type\": \"god\",\r\n    \"likes\": \"i like\",\r\n    \"comments\": \"i comments\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,14 +101,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://{{DOMAIN}}/posts/625fae96e952547309fb1f50",
+					"raw": "https://{{DOMAIN}}/posts/626247947cd49b5d8adfcace",
 					"protocol": "https",
 					"host": [
 						"{{DOMAIN}}"
 					],
 					"path": [
 						"posts",
-						"625fae96e952547309fb1f50"
+						"626247947cd49b5d8adfcace"
 					]
 				}
 			},
@@ -94,7 +121,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"title\": \"update\"\r\n}",
+					"raw": "{\r\n    \"name\": \"aaa_update\",\r\n    \"content\": \"bbb_update\",\r\n    \"image\": \"https://ccc_update.com\",\r\n    \"tags\": [\r\n        \"ddd_update\",\r\n        \"eee_update\"\r\n    ],\r\n    \"type\": \"fff_update\",\r\n    \"likes\": 11111,\r\n    \"comments\": 22222\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -102,14 +129,14 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{DOMAIN}}/posts/625fae96e952547309fb1f50",
+					"raw": "https://{{DOMAIN}}/posts/626247947cd49b5d8adfcace",
 					"protocol": "https",
 					"host": [
 						"{{DOMAIN}}"
 					],
 					"path": [
 						"posts",
-						"625fae96e952547309fb1f50"
+						"626247947cd49b5d8adfcace"
 					]
 				}
 			},
@@ -121,10 +148,12 @@
 				"method": "OPTIONS",
 				"header": [],
 				"url": {
-					"raw": "https://{{DOMAIN}}/posts",
+					"raw": "https://warm-falls-13177.herokuapp.com/posts",
 					"protocol": "https",
 					"host": [
-						"{{DOMAIN}}"
+						"warm-falls-13177",
+						"herokuapp",
+						"com"
 					],
 					"path": [
 						"posts"
