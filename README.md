@@ -8,4 +8,5 @@
 - 將 collection Model 獨立拉至 `/model` 路徑下
 
 ## git tag
-- v1.0: 版本1, controller 未拆分
+- v1.0: 簡單版本，controller 未拆分
+- v2.0: 進階版本，controller 已拆分

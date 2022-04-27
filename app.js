@@ -1,26 +1,11 @@
 const http = require("http");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const { HEADERS, REQUEST_METHOD } = require("./methods/constant");
 const { successHandle, errorHandle } = require("./methods/httpHandle");
 const Post = require("./models/post");
 
-// 載入 env
-dotenv.config({ path: "./config.env" });
-
-// 資料庫連線
-const DBUrl = process.env.DATABASE.replace(
-  "<password>",
-  process.env.DATABASE_PASSWORD
-);
-mongoose
-  .connect(DBUrl)
-  .then(() => {
-    console.log("資料庫連線成功");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+require("./connections"); // DB 連線
+// require("./connections") 等同 require("./connections/index")
+// 預設載入資料夾內的 index 檔
 
 const requestListener = async (req, res) => {
   let body = "";
