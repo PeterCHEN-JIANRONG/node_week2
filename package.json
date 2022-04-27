@@ -2,7 +2,7 @@
   "name": "week2",
   "version": "1.0.0",
   "description": "## node 實作練習 - 實作 todolist API，路由 `/posts` - 串接 MongoDB Cloud - atlas - 新增 dotenv 環境變數檔 - 部屬至 Heroku Cloud server - 將 collection Model 獨立拉至 `/model` 路徑下",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
