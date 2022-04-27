@@ -70,13 +70,18 @@ const requestListener = async (req, res) => {
     req.url.startsWith("/posts/") &&
     req.method === REQUEST_METHOD.DELETE
   ) {
-    const id = req.url.split("/").pop();
-    const post = await Post.findByIdAndDelete(id);
-    const posts = await Post.find();
-    if (post !== null) {
-      successHandle(res, posts); // 單筆刪除成功
-    } else {
-      errorHandle(res, "查無此 id"); // 查無 id
+    try {
+      const id = req.url.split("/").pop();
+      const post = await Post.findByIdAndDelete(id);
+      const posts = await Post.find();
+      if (post !== null) {
+        successHandle(res, posts); // 單筆刪除成功
+      } else {
+        errorHandle(res, "查無此 id"); // 查無 id
+      }
+    } catch (err) {
+      // 預防: 網址未帶入 id
+      errorHandle(res, err);
     }
   } else if (
     req.url.startsWith("/posts/") &&
@@ -104,6 +109,7 @@ const requestListener = async (req, res) => {
           errorHandle(res, "查無此 id"); // 查無 id
         }
       } catch (err) {
+        // 預防: JSON 解析失敗、網址未帶入 id
         errorHandle(res, err);
       }
     });
