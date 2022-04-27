@@ -1,4 +1,3 @@
-const http = require("http");
 const { HEADERS, REQUEST_METHOD } = require("./methods/constant");
 const { successHandle, errorHandle } = require("./methods/httpHandle");
 const Post = require("./models/post");
@@ -7,7 +6,7 @@ require("./connections"); // DB 連線
 // require("./connections") 等同 require("./connections/index")
 // 預設載入資料夾內的 index 檔
 
-const requestListener = async (req, res) => {
+const app = async (req, res) => {
   let body = "";
   req.on("data", (chunk) => (body += chunk)); // 接收資料
 
@@ -107,6 +106,4 @@ const requestListener = async (req, res) => {
   }
 };
 
-// server 監聽
-const app = http.createServer(requestListener);
-app.listen(process.env.PORT || 3005);
+module.exports = app;
