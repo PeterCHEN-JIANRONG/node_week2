@@ -1,4 +1,3 @@
-const { HEADERS, REQUEST_METHOD } = require("../service/constant");
 const { successHandle, errorHandle } = require("../service/httpHandle");
 const Post = require("../models/post");
 
