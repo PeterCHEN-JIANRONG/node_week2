@@ -123,5 +123,5 @@ const requestListener = async (req, res) => {
 };
 
 // server 監聽
-const server = http.createServer(requestListener);
-server.listen(process.env.PORT || 3005);
+const app = http.createServer(requestListener);
+app.listen(process.env.PORT || 3005);

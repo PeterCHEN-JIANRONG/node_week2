@@ -6,3 +6,6 @@
 - 新增 dotenv 環境變數檔
 - 部屬至 Heroku Cloud server
 - 將 collection Model 獨立拉至 `/model` 路徑下
+
+## git tag
+- v1.0: 版本1, controller 未拆分
